@@ -37,7 +37,7 @@ func processInput(s string) (stop bool) {
 		fmt.Println("Only positive Numbers")
 	} else {
 		printEnter()
-		fmt.Println(enterString)
+		fmt.Println(Sqrt(num))
 	}
 	return
 }
