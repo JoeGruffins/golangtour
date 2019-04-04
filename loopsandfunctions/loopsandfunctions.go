@@ -23,7 +23,7 @@ func processInput(s string) (stop bool) {
 			fmt.Println(err)
 			return
 		}
-		fmt.Printf(enAnswerString+"\n\n"+enEnterString, num, sqrt)
+		fmt.Printf(enAnswerString+"\n\n"+enEnterString+"\n", num, sqrt)
 	}
 	return
 }

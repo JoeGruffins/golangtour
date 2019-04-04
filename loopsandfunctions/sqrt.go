@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-const DELTA = 0.00000001
+const DELTA = 1e-10
 
 var (
 	enNegNumString string = `Can't square negative number.`
@@ -20,7 +20,7 @@ func nextZandDiff(x, z float64) (float64, float64) {
 	newZ := z - (z*z-x)/(2*z)
 	diff := newZ - z
 	if diff < 0 {
-		diff *=-1
+		diff *= -1
 	}
 	return newZ, diff
 }
