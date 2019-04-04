@@ -20,7 +20,7 @@ func nextZandDiff(x, z float64) (float64, float64) {
 	newZ := z - (z*z-x)/(2*z)
 	diff := newZ - z
 	if diff < 0 {
-		diff *= -1
+		diff = -diff
 	}
 	return newZ, diff
 }
