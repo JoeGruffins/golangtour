@@ -15,7 +15,6 @@ func (g myFunc) Pic(dx, dy int) [][]uint8 {
 		}
 	}
 	return pic
-
 }
 
 func main() {
