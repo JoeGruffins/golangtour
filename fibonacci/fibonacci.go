@@ -3,13 +3,10 @@ package main
 import "fmt"
 
 func fibonacci() func() int {
-	currentNum := 0
-	nextNum := 1
+	currentNum, nextNum := 0, 1
 	return func() int {
 		defer func() {
-			tmp := currentNum
-			currentNum = nextNum
-			nextNum += tmp
+			currentNum, nextNum = nextNum, currentNum+nextNum
 		}()
 		return currentNum
 	}
