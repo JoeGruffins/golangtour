@@ -39,16 +39,15 @@ func Crawl(url string, depth int, fetcher Fetcher) {
 		return
 	}
 	fmt.Printf("found: %s %q\n", url, body)
-	done := make(chan bool)
+	var wg sync.WaitGroup
 	for _, u := range urls {
+		wg.Add(1)
 		go func(url string) {
 			Crawl(url, depth-1, fetcher)
-			done <- true
+			wg.Done()
 		}(u)
 	}
-	for range urls {
-		<-done
-	}
+	wg.Wait()
 }
 
 func main() {
