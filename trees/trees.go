@@ -5,7 +5,7 @@ import (
 	"golang.org/x/tour/tree"
 )
 
-func Walk(t *tree.Tree, ch chan int) {
+func Walk(t *tree.Tree, ch chan<- int) {
 	if t == nil {
 		return
 	}
@@ -14,7 +14,7 @@ func Walk(t *tree.Tree, ch chan int) {
 	Walk(t.Right, ch)
 }
 
-func Walker(t *tree.Tree) chan int {
+func Walker(t *tree.Tree) <-chan int {
 	ch := make(chan int)
 	go func() {
 		Walk(t, ch)
@@ -43,5 +43,7 @@ func Same(t1, t2 *tree.Tree) bool {
 func main() {
 	t1 := tree.New(2)
 	t2 := tree.New(2)
-	fmt.Printf("same: %v", Same(t1, t2))
+	t3 := tree.New(3)
+	fmt.Printf("t1 and t2 are same: %v\n", Same(t1, t2))
+	fmt.Printf("t1 and t3 are same: %v", Same(t1, t3))
 }
