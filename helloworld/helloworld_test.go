@@ -10,6 +10,7 @@ import (
 const HELLO = "Hello World!\n"
 
 func captureOutput(f func()) string {
+	old := os.Stdout
 	r, w, _ := os.Pipe()
 	os.Stdout = w
 	f()
@@ -20,6 +21,7 @@ func captureOutput(f func()) string {
 		outC <- buf.String()
 	}()
 	w.Close()
+	os.Stdout = old
 	return <-outC
 }
 
