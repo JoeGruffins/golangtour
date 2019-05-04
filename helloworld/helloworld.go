@@ -1,9 +1,13 @@
 package main
 
-import(
+import (
 	"fmt"
 )
 
-func main(){
-	fmt.Println("Chinga tu madre")
+func hello() string {
+	return "Chinga tu madre!"
+}
+
+func main() {
+	fmt.Println(hello())
 }
