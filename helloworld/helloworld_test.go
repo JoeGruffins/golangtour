@@ -1,12 +1,33 @@
 package main
 
-import "testing"
+import (
+	"bytes"
+	"io"
+	"os"
+	"testing"
+)
 
-const HELLO = "Hello World!"
+const HELLO = "Hello World!\n"
+
+func captureOutput(f func()) string {
+	r, w, _ := os.Pipe()
+	os.Stdout = w
+	f()
+	outC := make(chan string)
+	go func() {
+		var buf bytes.Buffer
+		io.Copy(&buf, r)
+		outC <- buf.String()
+	}()
+	w.Close()
+	return <-outC
+}
 
 func TestHello(t *testing.T) {
-	v := hello()
+	v := captureOutput(func() {
+		hello()
+	})
 	if v != HELLO {
-		t.Error("Expected \"" + HELLO + "\" got \"" + v + "\"")
+		t.Error("\nExpected:\n" + HELLO + "got:\n" + v)
 	}
 }
