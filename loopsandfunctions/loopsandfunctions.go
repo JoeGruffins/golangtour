@@ -33,6 +33,9 @@ func Sqrt(x float64) (float64, error) {
 	if x < 0 {
 		return 0, SqrtNegativeError(x)
 	}
+	if x == 0 { //i realized while testing that this breaks at 0, someone smart please tell be the real way to answer this
+		return 0, nil
+	}
 	z := 1.0
 	for newZ, diff := nextZandDiff(x, z); diff > DELTA; z = newZ {
 		newZ, diff = nextZandDiff(x, z)
