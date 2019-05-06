@@ -25,8 +25,7 @@ var sqrtTests = []sqrtTestTrio{
 	{4, 2, nil},
 	{35, math.Sqrt(35), nil},
 	{0.1, math.Sqrt(0.1), nil},
-	//test fails here with infinite loop...
-	//{5.4e13, math.Sqrt(5.4e13), nil},
+	{5.4e13, math.Sqrt(5.4e13), nil},
 	{0, 0, nil},
 	{-1, 0, SqrtNegativeError(-1)},
 	{outputNum: 0, outputErr: nil},
