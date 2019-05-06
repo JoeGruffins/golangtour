@@ -44,7 +44,6 @@ func Sqrt(x float64) (float64, error) {
 }
 
 func processInput(s string) (stop bool) {
-	stop = false
 	if num, err := strconv.ParseFloat(s, 64); s == "exit" {
 		stop = true
 	} else if err != nil {

@@ -38,8 +38,8 @@ var inputTests = []inputTestTrio{
 	{`!"#$%&'()@<>`, false, fmt.Sprintf(enNumberPlz + "\n")},
 	{"54ee12", false, fmt.Sprintf(enNumberPlz + "\n")},
 	{"5e12", false, fmt.Sprintf(enAnswerString+"\n\n"+enEnterString+"\n", 5e12, sqrtNoError(5e12))},
-	//scientific notation with two digit significand causes hang...
-	//{"54e12", false, fmt.Sprintf(enAnswerString+"\n\n"+enEnterString+"\n", 54e12, sqrtNoError(54e12))},
+	//this seems to cause an infinite loop...
+	//{"5.4e13", false, fmt.Sprintf(enAnswerString+"\n\n"+enEnterString+"\n", 54e12, sqrtNoError(54e12))},
 	{"7", false, fmt.Sprintf(enAnswerString+"\n\n"+enEnterString+"\n", 7, sqrtNoError(7))},
 	{"0", false, fmt.Sprintf(enAnswerString+"\n\n"+enEnterString+"\n", 0, 0)},
 	{"-3", false, fmt.Sprintf(SqrtNegativeError(-3).Error() + "\n")},
