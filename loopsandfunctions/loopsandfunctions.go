@@ -33,14 +33,14 @@ func Sqrt(x float64) (float64, error) {
 	if x < 0 {
 		return 0, SqrtNegativeError(x)
 	}
-	if x == 0 { //0 can get funky, we know its 0 so just whatevs	
-	return 0, nil
+	if x == 0 { //0 can get funky, we know its 0 so just whatevs
+		return 0, nil
 	}
 	z := 1.0
 	timeout := 0 //some numbers will cause an oscillation, this prevents the infinite loop
 	for newZ, diff := nextZandDiff(x, z); diff > DELTA && timeout < 100; z = newZ {
 		newZ, diff = nextZandDiff(x, z)
-	timeout++
+		timeout++
 	}
 	return z, nil
 }
